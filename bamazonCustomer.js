@@ -50,7 +50,7 @@ function productInfo() {
                     connection.query(updateInventory, function (err, data) {
                         if (err) throw err;
 
-                        console.log("Your order is placed! Your total is $" + productRes.price * quantity2);
+                        console.log("Your order is placed! Your total is $" + productRes.price.toFixed(2) * quantity2);
                         console.log("Thank you for shopping with us!");
                         console.log("-------------------------------\n");
                         keepShopping();
@@ -67,7 +67,7 @@ function productInfo() {
 function showAllProducts() {
     connection.query("SELECT * FROM products", function (err, res) {
         for (var i = 0; i < res.length; i++) {
-            console.log("\nItem ID: " + res[i].item_id + " | " + "Product Name: " + res[i].product_name + " | " + "Department: " + res[i].department_name + " | " + "Price: " + res[i].price.toString() + " | " + "Stock Quantity: " + res[i].stock_quantity.toString());
+            console.log("\nItem ID: " + res[i].item_id + " | " + "Product Name: " + res[i].product_name + " | " + "Department: " + res[i].dept_name + " | " + "Price: " + res[i].price.toString() + " | " + "Stock Quantity: " + res[i].stock_quantity.toString());
         }
         console.log("-------------------------------");
         productInfo();
